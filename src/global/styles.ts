@@ -1,0 +1,15 @@
+import { createGlobalStyle } from 'styled-components'
+
+const GlobalStyle = createGlobalStyle`
+
+    body{
+        margin:0;
+        padding:0;
+        background: white;
+    }
+    button{
+        cursor: pointer;
+    }
+`
+
+export { GlobalStyle }

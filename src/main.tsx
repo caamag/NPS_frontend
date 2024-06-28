@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 //pages
 import Home from './pages/home/index.tsx'
+import Login from './pages/Login/index.tsx'
 
 const router = createBrowserRouter([
   {
@@ -14,7 +15,8 @@ const router = createBrowserRouter([
     children: [
       { path: '/', element: <Home /> }
     ]
-  }
+  },
+  { path: '/login', element: <Login /> }
 ])
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

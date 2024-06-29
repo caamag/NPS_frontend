@@ -6,7 +6,8 @@ import { useState } from 'react'
 const Login = () => {
 
     const [email, setEmail] = useState<string>('');
-    const [pass, setPass] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+
 
     return (
         <Css.SignInContainer>
@@ -20,11 +21,17 @@ const Login = () => {
                 <Css.SignInInput
                     placeholder='E-mail:'
                     required
+                    value={email}
+                    type='email'
+                    onChange={(e) => { setEmail(e.target.value) }}
                 />
 
                 <Css.SignInInput
                     placeholder='Senha:'
                     required
+                    type='password'
+                    value={password}
+                    onChange={(e) => { setPassword(e.target.value) }}
                 /><br />
 
                 <Button primary width='63%'>Entrar</Button>

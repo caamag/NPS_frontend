@@ -11,28 +11,26 @@ export const SignInContainer = styled.div`
 export const SignInForm = styled.form`
     width: 500px;
     height: 400px;
-    text-align: center;
-    box-shadow: 2px 5px 15px gray;
-`
-
-export const TitleSignInForm = styled.h1`
-    font-size: 3rem;
-    color: rgb(40,40,40);
-    margin-top: 20px;
-    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0px 0px 15px rgb(200,200,200);
 `
 
 export const SignInInput = styled.input`
-    padding: 15px 30px;
+    padding-left: 15px;
+    height: 50px;
     width: 60%;
     margin: 0 auto;
     margin-top: 30px;
-    border: none;
+    border: 1px solid rgb(200,200,200);
     font-size: 16px;
-    box-shadow: 2px 5px 10px rgb(200,200,200);
 
     &:focus{
         outline: none;
+        border: 1.5px solid #054f77;
+        box-shadow: 0px 0px 5px #054f77;
     }
 `
 

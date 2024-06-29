@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
 
     html{
         font-size: 62.5%;
-        font-family: 'Times New Roman', Times, serif;
+        font-family: Arial, Helvetica, sans-serif;
         scroll-behavior: smooth;
     }
     button{

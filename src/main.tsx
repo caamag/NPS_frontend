@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 //pages
 import Home from './pages/home/index.tsx'
+import Settings from './pages/settings/index.tsx'
 import Login from './pages/Login/index.tsx'
 
 const routes = createBrowserRouter([
@@ -13,7 +14,8 @@ const routes = createBrowserRouter([
     path: '/',
     element: <App />,
     children: [
-      { path: '/', element: <Home /> }
+      { path: '/', element: <Home /> },
+      { path: '/csat/settings', element: <Settings /> }
     ]
   },
   {

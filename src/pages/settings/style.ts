@@ -4,6 +4,7 @@ export const SettingsContainer = styled.div`
     width: 80%;
     height: 100vh;
     position: relative;
+    overflow-y: scroll;
 
     h2{
         margin-top: 50px;

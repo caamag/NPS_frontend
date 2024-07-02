@@ -1,17 +1,16 @@
 import * as Css from './style'
+import { useState } from 'react';
 import { Button } from '../../global/button.style';
+import Preview from '../../components/preview';
+
+//icons
 import emptyStar from '../../assets/emptyStar.png'
 import yellowStar from '../../assets/yellowStar.png'
-
-//emojis
 import badEmoji from '../../assets/pessimo.png'
 import sadEmoji from '../../assets/triste.png'
 import neutralEmoji from '../../assets/neutro.png'
 import happyEmoji from '../../assets/feliz.png'
 import veryHappyEmoji from '../../assets/muito-feliz.png'
-
-
-import { useState } from 'react';
 
 const Settings = () => {
 
@@ -23,6 +22,8 @@ const Settings = () => {
     const [numberIcons, setNumberIcons] = useState<string>('')
 
     const emojiLis: string[] = [badEmoji, sadEmoji, neutralEmoji, happyEmoji, veryHappyEmoji]
+    const icons = modelIndex === 1 ? [emptyStar, yellowStar] : emojiLis;
+
 
     function handleClick(index: number) {
         setRating(index + 1)
@@ -106,6 +107,13 @@ const Settings = () => {
                     />
                 </label><br /><br />
             </Css.SettingsForm>
+
+            <Preview
+                iconsList={icons ? icons : [emptyStar, yellowStar]}
+                numberIcons={numberIcons}
+                NPS={true}
+                comment={true}
+            />
         </Css.SettingsContainer >
     )
 }

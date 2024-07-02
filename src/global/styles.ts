@@ -8,8 +8,10 @@ const GlobalStyle = createGlobalStyle`
 
     html{
         font-size: 62.5%;
-        font-family: Arial, Helvetica, sans-serif;
         scroll-behavior: smooth;
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
     }
     button{
         cursor: pointer;
@@ -17,7 +19,11 @@ const GlobalStyle = createGlobalStyle`
     }
 
     input, button,p, select{
-        font-family: 'Times New Roman', Times, serif;
+        font-family: "Montserrat", sans-serif;
+    }
+
+    p{
+        font-size: 14px;
     }
 `;
 

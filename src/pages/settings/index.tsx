@@ -15,7 +15,6 @@ import veryHappyEmoji from '../../assets/muito-feliz.png'
 const Settings = () => {
 
     const buttonData = Array(5).fill(null)
-    const [rating, setRating] = useState<number>(0);
     const [modelIndex, setModelIndex] = useState<number | null>(null)
     const [npsQuestion, setNpsQuestion] = useState<boolean>(false)
     const [comment, setComment] = useState<boolean>(false)
@@ -26,11 +25,6 @@ const Settings = () => {
 
     const emojiLis: string[] = [badEmoji, sadEmoji, neutralEmoji, happyEmoji, veryHappyEmoji]
     const icons = modelIndex === 1 ? [emptyStar, yellowStar] : emojiLis;
-
-
-    function handleClick(index: number) {
-        setRating(index + 1)
-    }
 
     return (
         <Css.SettingsContainer>
@@ -51,9 +45,8 @@ const Settings = () => {
                     {buttonData.map((_, index) => (
                         <img
                             key={index}
-                            src={index < rating ? yellowStar : emptyStar}
+                            src={yellowStar}
                             alt="star icon"
-                            onClick={() => { handleClick(index) }}
                         />
                     ))}
                 </div>

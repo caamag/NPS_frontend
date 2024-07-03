@@ -71,4 +71,10 @@ export const SettingsForm = styled.form`
     input[type='checkbox']{
         margin: 20px;
     }
+
+    textarea{
+        width: 300px;
+        padding: 8px;
+        min-height: 100px;
+    }
 `;

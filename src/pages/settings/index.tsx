@@ -16,10 +16,13 @@ const Settings = () => {
 
     const buttonData = Array(5).fill(null)
     const [rating, setRating] = useState<number>(0);
-    const [modelIndex, setModelIndex] = useState<number | null>(null);
+    const [modelIndex, setModelIndex] = useState<number | null>(null)
     const [npsQuestion, setNpsQuestion] = useState<boolean>(false)
     const [comment, setComment] = useState<boolean>(false)
-    const [numberIcons, setNumberIcons] = useState<string>('')
+    const [numberIcons, setNumberIcons] = useState<string>('5')
+    const [questions, setQuestions] = useState<string>('Example')
+    const [npsTitle, setNPSTitle] = useState<string>('')
+    const [commentTitle, setCommentTitle] = useState<string>()
 
     const emojiLis: string[] = [badEmoji, sadEmoji, neutralEmoji, happyEmoji, veryHappyEmoji]
     const icons = modelIndex === 1 ? [emptyStar, yellowStar] : emojiLis;
@@ -76,6 +79,31 @@ const Settings = () => {
                 </div>
             </Css.QuestionModel><br /><br /><br /><br />
 
+            <Css.SettingsForm>
+                {modelIndex === 1 && <>
+                    <label>
+                        Number of icons: <br /><br />
+                        <input
+                            type="text"
+                            placeholder='Number:'
+                            value={numberIcons}
+                            onChange={(e) => { setNumberIcons(e.target.value) }}
+                            required
+                        />
+                    </label><br /><br /><br /><br />
+                </>}
+
+                <label>
+                    Define questions separated by " ; "<br /><br />
+                    <textarea
+                        value={questions}
+                        placeholder='Define questions:'
+                        onChange={(e) => { setQuestions(e.target.value) }}
+                        required
+                    ></textarea>
+                </label>
+            </Css.SettingsForm>
+
             <Css.QuestionModel>
                 <Button
                     width='100px'
@@ -85,6 +113,15 @@ const Settings = () => {
                 </Button>
                 <h3>Do you want NPS question?</h3>
             </Css.QuestionModel>
+
+            {npsQuestion && <input
+                style={{ marginLeft: '50px', padding: '5px' }}
+                type="text"
+                placeholder='Insert the NPS title:'
+                required
+                value={npsTitle}
+                onChange={(e) => { setNPSTitle(e.target.value) }}
+            />}
 
             <Css.QuestionModel>
                 <Button
@@ -96,23 +133,23 @@ const Settings = () => {
                 <h3>Do you want comment field?</h3>
             </Css.QuestionModel>
 
-            <Css.SettingsForm>
-                <label>
-                    Number of icons: <br /><br />
-                    <input
-                        type="text"
-                        placeholder='Number:'
-                        value={numberIcons}
-                        onChange={(e) => { setNumberIcons(e.target.value) }}
-                    />
-                </label><br /><br />
-            </Css.SettingsForm>
+            {comment && <input
+                style={{ marginLeft: '50px', padding: '5px' }}
+                type="text"
+                placeholder='Insert the comment title:'
+                required
+                value={commentTitle}
+                onChange={(e) => { setCommentTitle(e.target.value) }}
+            />}
 
             <Preview
                 iconsList={icons ? icons : [emptyStar, yellowStar]}
                 numberIcons={numberIcons}
-                NPS={true}
-                comment={true}
+                NPS={npsQuestion}
+                comment={comment}
+                questions={questions}
+                NPSTitle={npsTitle}
+                commentTitle={commentTitle}
             />
         </Css.SettingsContainer >
     )

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const PreviewContainer = styled.div`
     position: absolute;
-    height: 60vh;
+    max-height: 60vh;
     width: 40%;
     top: 150px;
     right: 50px;
@@ -47,14 +47,19 @@ export const iconsContainer = styled.div`
     }
 `
 
-export const npsBox = styled.div`
+export const npsBox = styled.div<{ index: number }>`
     width: 30px;
     height: 30px;
-    background-color: red;
     color: white;
     font-size: 14px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-right: 5px;
+
+    background-color: ${({ index }) => {
+        if (index <= 6) return 'red'
+        if (index <= 8) return 'rgb(255, 212, 0)'
+        return 'rgb(29, 155, 29)'
+    }};
 `

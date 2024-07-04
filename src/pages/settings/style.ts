@@ -78,3 +78,11 @@ export const SettingsForm = styled.form`
         min-height: 100px;
     }
 `;
+
+export const CustomizeButton = styled.button`
+    margin-left: 20px;
+    background-color: rgb(40,40,40);
+    padding: 7px 10px;
+    color: white;
+    font-size: 14px;
+`

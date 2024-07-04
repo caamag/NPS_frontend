@@ -2,20 +2,14 @@ import * as Css from './style'
 import { useState } from 'react';
 import { Button } from '../../global/button.style';
 import Preview from '../../components/preview';
-
-//icons
-import emptyStar from '../../assets/emptyStar.png'
-import yellowStar from '../../assets/yellowStar.png'
-import badEmoji from '../../assets/pessimo.png'
-import sadEmoji from '../../assets/triste.png'
-import neutralEmoji from '../../assets/neutro.png'
-import happyEmoji from '../../assets/feliz.png'
-import veryHappyEmoji from '../../assets/muito-feliz.png'
+import QuestionModel from '../../components/questionModel';
+import * as icon from '../../global/icons';
 
 const Settings = () => {
 
     const buttonData = Array(5).fill(null)
     const [modelIndex, setModelIndex] = useState<number | null>(null)
+
     const [npsQuestion, setNpsQuestion] = useState<boolean>(false)
     const [comment, setComment] = useState<boolean>(false)
     const [numberIcons, setNumberIcons] = useState<string>('5')
@@ -23,8 +17,8 @@ const Settings = () => {
     const [npsTitle, setNPSTitle] = useState<string>('')
     const [commentTitle, setCommentTitle] = useState<string>()
 
-    const emojiLis: string[] = [badEmoji, sadEmoji, neutralEmoji, happyEmoji, veryHappyEmoji]
-    const icons = modelIndex === 1 ? [emptyStar, yellowStar] : emojiLis;
+    const emojiList: string[] = [icon.badEmoji, icon.sadEmoji, icon.neutralEmoji, icon.happyEmoji, icon.veryHappyEmoji];
+    const icons = modelIndex === 2 ? emojiList : [icon.emptyStar, icon.yellowStar];
 
     return (
         <Css.SettingsContainer>
@@ -32,45 +26,12 @@ const Settings = () => {
             <p>Here your can change icons, template and configure some options in your csat template.</p>
 
             <h3>Question model:</h3>
-            <Css.QuestionModel>
-                <Button
-                    width='100px'
-                    onClick={() => { setModelIndex(1) }}
-                    className={modelIndex === 1 ? 'checked' : ''}
-                >
-                    {modelIndex === 1 ? 'Checked' : 'Check'}
-                </Button>
 
-                <div>
-                    {buttonData.map((_, index) => (
-                        <img
-                            key={index}
-                            src={yellowStar}
-                            alt="star icon"
-                        />
-                    ))}
-                </div>
-            </Css.QuestionModel>
-
-            <Css.QuestionModel>
-                <Button
-                    width='100px'
-                    onClick={() => { setModelIndex(2) }}
-                    className={modelIndex === 2 ? 'checked' : ''}>
-                    {modelIndex === 2 ? 'Checked' : 'Check'}
-                </Button>
-
-                <div>
-                    {buttonData.map((_, index) => (
-                        <img
-                            className={``}
-                            key={index}
-                            src={emojiLis[index]}
-                            alt="emoji icon"
-                        />
-                    ))}
-                </div>
-            </Css.QuestionModel><br /><br /><br /><br />
+            <QuestionModel
+                modelIndex={modelIndex}
+                setModelIndex={setModelIndex}
+                buttonData={buttonData}
+            />
 
             <Css.SettingsForm>
                 {modelIndex === 1 && <>
@@ -107,14 +68,19 @@ const Settings = () => {
                 <h3>Do you want NPS question?</h3>
             </Css.QuestionModel>
 
-            {npsQuestion && <input
-                style={{ marginLeft: '50px', padding: '5px' }}
-                type="text"
-                placeholder='Insert the NPS title:'
-                required
-                value={npsTitle}
-                onChange={(e) => { setNPSTitle(e.target.value) }}
-            />}
+            {npsQuestion && <>
+                <input
+                    style={{ marginLeft: '50px', padding: '5px' }}
+                    type="text"
+                    placeholder='Insert the NPS title:'
+                    required
+                    value={npsTitle}
+                    onChange={(e) => { setNPSTitle(e.target.value) }}
+                />
+                <Css.CustomizeButton>
+                    customize
+                </Css.CustomizeButton>
+            </>}
 
             <Css.QuestionModel>
                 <Button
@@ -136,7 +102,7 @@ const Settings = () => {
             />}
 
             <Preview
-                iconsList={icons ? icons : [emptyStar, yellowStar]}
+                iconsList={icons}
                 numberIcons={numberIcons}
                 NPS={npsQuestion}
                 comment={comment}

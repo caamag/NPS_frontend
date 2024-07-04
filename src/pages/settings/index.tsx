@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Button } from '../../global/button.style';
 import Preview from '../../components/preview';
 import QuestionModel from '../../components/questionModel';
+import NpsModal from '../../components/npsModal';
 import * as icon from '../../global/icons';
 
 const Settings = () => {
@@ -16,6 +17,8 @@ const Settings = () => {
     const [questions, setQuestions] = useState<string>('Example')
     const [npsTitle, setNPSTitle] = useState<string>('')
     const [commentTitle, setCommentTitle] = useState<string>()
+    const [npsConfig, setNpsConfig] = useState<boolean>(false)
+    const [colors, setColors] = useState<string[]>(['#e31212', '#edc446', '#41aa14']);
 
     const emojiList: string[] = [icon.badEmoji, icon.sadEmoji, icon.neutralEmoji, icon.happyEmoji, icon.veryHappyEmoji];
     const icons = modelIndex === 2 ? emojiList : [icon.emptyStar, icon.yellowStar];
@@ -77,7 +80,8 @@ const Settings = () => {
                     value={npsTitle}
                     onChange={(e) => { setNPSTitle(e.target.value) }}
                 />
-                <Css.CustomizeButton>
+                <Css.CustomizeButton
+                    onClick={() => { setNpsConfig(config => !config) }}>
                     customize
                 </Css.CustomizeButton>
             </>}
@@ -101,6 +105,8 @@ const Settings = () => {
                 onChange={(e) => { setCommentTitle(e.target.value) }}
             />}
 
+            {npsConfig && <NpsModal setColors={setColors} setNpsConfig={setNpsConfig} />}
+
             <Preview
                 iconsList={icons}
                 numberIcons={numberIcons}
@@ -109,6 +115,7 @@ const Settings = () => {
                 questions={questions}
                 NPSTitle={npsTitle}
                 commentTitle={commentTitle}
+                colors={colors}
             />
         </Css.SettingsContainer >
     )

@@ -47,7 +47,14 @@ export const iconsContainer = styled.div`
     }
 `
 
-export const npsBox = styled.div<{ index: number }>`
+interface NpsBoxPorps {
+    index: number;
+    badColor?: string;
+    neutralColor?: string;
+    greatColor?: string;
+}
+
+export const npsBox = styled.div<NpsBoxPorps>`
     width: 30px;
     height: 30px;
     color: white;
@@ -57,9 +64,9 @@ export const npsBox = styled.div<{ index: number }>`
     align-items: center;
     margin-right: 5px;
 
-    background-color: ${({ index }) => {
-        if (index <= 6) return 'red'
-        if (index <= 8) return 'rgb(255, 212, 0)'
-        return 'rgb(29, 155, 29)'
+    background-color: ${({ index, badColor, neutralColor, greatColor }) => {
+        if (index <= 6) return badColor ? badColor : 'red'
+        if (index <= 8) return neutralColor ? neutralColor : 'rgb(255, 212, 0)'
+        return greatColor ? greatColor : 'rgb(29, 155, 29)'
     }};
 `

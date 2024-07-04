@@ -10,6 +10,7 @@ interface PreviewProps {
     comment: boolean;
     commentTitle?: string;
     questions: string;
+    colors: string[]
 }
 
 const Preview: React.FC<PreviewProps> = ({
@@ -19,7 +20,8 @@ const Preview: React.FC<PreviewProps> = ({
     NPSTitle,
     comment,
     commentTitle,
-    questions
+    questions,
+    colors
 }) => {
 
     const questionsSplited = questions.split(';')
@@ -52,7 +54,15 @@ const Preview: React.FC<PreviewProps> = ({
                     <h4>{NPSTitle}</h4><br />
                     <Css.iconsContainer>
                         {Array.from({ length: 11 }, (_, index) => (
-                            <Css.npsBox key={index} index={index}>{index}</Css.npsBox>
+                            <Css.npsBox
+                                key={index}
+                                index={index}
+                                badColor={colors[0]}
+                                neutralColor={colors[1]}
+                                greatColor={colors[2]}
+                            >
+                                {index}
+                            </Css.npsBox>
                         ))}
                     </Css.iconsContainer>
                 </Css.Question>

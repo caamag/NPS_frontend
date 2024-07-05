@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Button } from '../../global/button.style';
 import Preview from '../../components/preview';
 import QuestionModel from '../../components/questionModel';
-import NpsModal from '../../components/npsModal';
+import NpsModal from '../../components/modals/npsModal';
 import * as icon from '../../global/icons';
 
 const Settings = () => {

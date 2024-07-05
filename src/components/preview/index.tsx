@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as Css from './style'
 import * as icon from '../../global/icons'
+import PreviewModal from '../modals/previewModal';
 
 interface PreviewProps {
     iconsList: string[];
@@ -29,59 +30,70 @@ const Preview: React.FC<PreviewProps> = ({
 }) => {
 
     const questionsSplited = questions.split(';')
-    const emojiLis: string[] = [icon.badEmoji, icon.sadEmoji, icon.neutralEmoji, icon.happyEmoji, icon.veryHappyEmoji];
-
+    const emojiLis: string[] = [icon.badEmoji, icon.sadEmoji, icon.neutralEmoji, icon.happyEmoji, icon.veryHappyEmoji]
+    const [previewModal, setPreviewModal] = useState<boolean>(false)
+    const [openPreview, setOpenPreview] = useState<boolean>(false)
 
     return (
-        <Css.PreviewContainer>
-            <h1 style={{ textAlign: 'center', fontSize: '28px' }}>Preview</h1><br />
+        <>
 
-            {questionsSplited.length > 0 && questionsSplited.map((question, index) => (
-                <Css.Question>
+            {!openPreview && <Css.OpenPreviewBtn onClick={() => { setOpenPreview(true) }}>Open preview</Css.OpenPreviewBtn>}
 
-                    <h4 key={index}>{question}</h4>
-                    <Css.iconsContainer>
-                        {iconsList.includes('/src/assets/pessimo.png') && iconsList.map((_, index) => (
-                            <img src={emojiLis[index]} alt="" />
-                        ))}
+            <Css.PreviewContainer isPreview={openPreview}>
+                <Css.CloseBtn onClick={() => { setOpenPreview(false) }}>x</Css.CloseBtn>
+                <Css.editBtn onClick={() => { setPreviewModal(true) }}><img src={icon.editIcon} /></Css.editBtn>
 
-                        {!iconsList.includes('/src/assets/pessimo.png') && Array.from({ length: Number(numberIcons) }, (_, idx) => (
-                            <img src={icon.emptyStar} alt="" key={idx} />
-                        ))}
-                    </Css.iconsContainer><br />
+                <h1 style={{ textAlign: 'center', fontSize: '28px' }}>Preview</h1><br />
 
-                </Css.Question>
-            ))}
+                {questionsSplited.length > 0 && questionsSplited.map((question, index) => (
+                    <Css.Question>
 
-            {NPS && <>
-                <Css.Question>
-                    <h4>{NPSTitle}</h4><br />
-                    <Css.iconsContainer>
-                        {Array.from({ length: 11 }, (_, index) => (
-                            <Css.npsBox
-                                key={index}
-                                index={index}
-                                badColor={colors[0]}
-                                neutralColor={colors[1]}
-                                greatColor={colors[2]}
-                                radius={borderRadius}
-                                fontColor={fontColor}
-                            >
-                                {index}
-                            </Css.npsBox>
-                        ))}
-                    </Css.iconsContainer>
-                </Css.Question>
-            </>}
+                        <h4 key={index}>{question}</h4>
+                        <Css.iconsContainer>
+                            {iconsList.includes('/src/assets/pessimo.png') && iconsList.map((_, index) => (
+                                <img src={emojiLis[index]} alt="" />
+                            ))}
 
-            {comment && <>
-                <Css.Question>
-                    <h4>{commentTitle}</h4>
-                    <textarea></textarea>
-                </Css.Question>
-            </>}
+                            {!iconsList.includes('/src/assets/pessimo.png') && Array.from({ length: Number(numberIcons) }, (_, idx) => (
+                                <img src={icon.emptyStar} alt="" key={idx} />
+                            ))}
+                        </Css.iconsContainer><br />
 
-        </Css.PreviewContainer>
+                    </Css.Question>
+                ))}
+
+                {NPS && <>
+                    <Css.Question>
+                        <h4>{NPSTitle}</h4><br />
+                        <Css.iconsContainer>
+                            {Array.from({ length: 11 }, (_, index) => (
+                                <Css.npsBox
+                                    key={index}
+                                    index={index}
+                                    badColor={colors[0]}
+                                    neutralColor={colors[1]}
+                                    greatColor={colors[2]}
+                                    radius={borderRadius}
+                                    fontColor={fontColor}
+                                >
+                                    {index}
+                                </Css.npsBox>
+                            ))}
+                        </Css.iconsContainer>
+                    </Css.Question>
+                </>}
+
+                {comment && <>
+                    <Css.Question>
+                        <h4>{commentTitle}</h4>
+                        <textarea></textarea>
+                    </Css.Question>
+                </>}
+
+                {previewModal && <PreviewModal setPreviewModal={setPreviewModal} />}
+
+            </Css.PreviewContainer>
+        </>
     )
 
 }

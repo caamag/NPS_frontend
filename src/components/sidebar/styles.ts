@@ -5,6 +5,7 @@ export const SidebarContainer = styled.div`
     width: 20%;
     height: 100%;
     background-color: rgb(40,40,40);
+    z-index: 3;
 
     h1{
         font-size: 4rem;

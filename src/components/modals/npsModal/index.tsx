@@ -1,5 +1,5 @@
 import * as Css from './style'
-import { Button } from '../../global/button.style';
+import { Button } from '../../../global/button.style';
 import React, { useState } from 'react';
 
 interface NpsModalProps {

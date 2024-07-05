@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const PreviewContainer = styled.div`
+interface PreviewProps {
+    isPreview: boolean
+}
+
+export const PreviewContainer = styled.div<PreviewProps>`
     position: absolute;
     max-height: 60vh;
     width: 40%;
@@ -9,9 +13,15 @@ export const PreviewContainer = styled.div`
     box-shadow: 0px 0px 10px gray;
     overflow-y: scroll;
     padding: 15px;
+    background-color: white;
 
     @media screen and (max-width: 1150px) {
-        display: none;
+        width: 80%;
+        height: 120vh;
+        max-height: 120vh;
+        top: 50px;
+        left: 50px;
+        display: ${props => props.isPreview ? 'block' : 'none'};
     }
 
     @media screen and (min-width: 1500px) {
@@ -79,4 +89,53 @@ export const npsBox = styled.div<NpsBoxPorps>`
 
     border-radius: ${props => props.radius ? props.radius : '0px'};
     color: ${props => props.fontColor ? props.fontColor : 'black'};
+`
+
+export const editBtn = styled.button`
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 25px;
+    height: 25px;
+    background: none; 
+
+    img{
+        width: 100%;
+        height: 100%;
+    }
+`
+
+export const OpenPreviewBtn = styled.button`
+    margin: 50px;
+    padding: 15px;
+    border: solid 1px rgb(40,40,40);
+    font-size: 16px;
+    font-weight: 400;
+    transition: 150ms;
+    display: none;
+
+    &:hover{
+        background-color: rgb(40,40,40);
+        color: white;
+    }
+
+    @media screen and (max-width: 1150px) {
+        display: block;
+    }
+`
+
+export const CloseBtn = styled.button`
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    background-color: rgb(40,40,40);
+    display: none;
+
+    @media screen and (max-width: 1150px) {
+        display: block;
+    }
 `

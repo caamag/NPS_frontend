@@ -6,6 +6,7 @@ import sadEmoji from '../assets/triste.png';
 import neutralEmoji from '../assets/neutro.png';
 import happyEmoji from '../assets/feliz.png';
 import veryHappyEmoji from '../assets/muito-feliz.png';
+import editIcon from '../assets/editing.png';
 
 export {
     yellowStar,
@@ -15,4 +16,5 @@ export {
     neutralEmoji,
     happyEmoji,
     veryHappyEmoji,
+    editIcon,
 }

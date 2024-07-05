@@ -17,8 +17,8 @@ export const PreviewContainer = styled.div<PreviewProps>`
 
     @media screen and (max-width: 1150px) {
         width: 80%;
-        height: 120vh;
-        max-height: 120vh;
+        height: 140vh;
+        max-height: 140vh;
         top: 50px;
         left: 50px;
         display: ${props => props.isPreview ? 'block' : 'none'};

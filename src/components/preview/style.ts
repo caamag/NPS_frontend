@@ -52,21 +52,31 @@ interface NpsBoxPorps {
     badColor?: string;
     neutralColor?: string;
     greatColor?: string;
+    radius?: string;
+    fontColor?: string;
 }
 
 export const npsBox = styled.div<NpsBoxPorps>`
-    width: 30px;
-    height: 30px;
-    color: white;
+    width: 35px;
+    height: 27px;
     font-size: 14px;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     margin-right: 5px;
+    border: ${props => props.badColor
+        || props.neutralColor
+        || props.greatColor ?
+        'none' : 'solid 1px black'
+    };
 
     background-color: ${({ index, badColor, neutralColor, greatColor }) => {
-        if (index <= 6) return badColor ? badColor : 'red'
-        if (index <= 8) return neutralColor ? neutralColor : 'rgb(255, 212, 0)'
-        return greatColor ? greatColor : 'rgb(29, 155, 29)'
+        if (index <= 6) return badColor
+        if (index <= 8) return neutralColor
+        return greatColor
     }};
+
+    border-radius: ${props => props.radius ? props.radius : '0px'};
+    color: ${props => props.fontColor ? props.fontColor : 'black'};
 `

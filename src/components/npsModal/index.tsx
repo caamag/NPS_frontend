@@ -1,16 +1,18 @@
 import * as Css from './style'
 import { Button } from '../../global/button.style';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 interface NpsModalProps {
     setColors: (colors: string[]) => void
-    setNpsConfig: boolean | any
+    setNpsConfig: (npsConfig: boolean) => void
+    setBorderRadius: (borderRadius: string) => void
+    setFontColor: (fontColor: string) => void
 }
 
-const NpsModal: React.FC<NpsModalProps> = ({ setColors, setNpsConfig }) => {
+const NpsModal: React.FC<NpsModalProps> = ({ setColors, setNpsConfig, setBorderRadius, setFontColor }) => {
     const [inputColor, setInputColor] = useState<string[]>(['', '', ''])
 
-    function handleChange(e: React.ChangeEvent<HTMLInputElement>, index: number) {
+    function handleChangeColor(e: React.ChangeEvent<HTMLInputElement>, index: number): void {
         const newColors = [...inputColor];
         newColors[index] = e.target.value;
         setInputColor(newColors)
@@ -24,22 +26,24 @@ const NpsModal: React.FC<NpsModalProps> = ({ setColors, setNpsConfig }) => {
     return (
         <Css.ModalContainer>
             <Css.Modal>
-                <input
-                    type="color"
-                    onChange={(e) => { handleChange(e, 0) }}
-                />
 
-                <input
-                    type="color"
-                    onChange={(e) => { handleChange(e, 1) }}
-                />
+                <h3>Background colors</h3>
+                <input type="color" onChange={(e) => { handleChangeColor(e, 0) }} />
+                <input type="color" onChange={(e) => { handleChangeColor(e, 1) }} />
+                <input type="color" onChange={(e) => { handleChangeColor(e, 2) }} /><br />
 
-                <input
-                    type="color"
-                    onChange={(e) => { handleChange(e, 2) }}
-                />
+                <h3>Border (px or %)</h3>
+                <input type="text" placeholder='PX:' onChange={(e) => { setBorderRadius(e.target.value) }} /><br />
 
-                <Button width='200px' onClick={handleClick}>Submit</Button>
+                <h3>Font Color</h3>
+                <input type="text"
+                    placeholder='Color:'
+                    className='font-color-input'
+                    onChange={(e) => { setFontColor(e.target.value) }} /><br />
+
+                <Button width='100px' onClick={handleClick}>Submit</Button>
+
+                <Css.CloseBtn onClick={() => { setNpsConfig(false) }}>x</Css.CloseBtn>
             </Css.Modal>
         </Css.ModalContainer>
     )

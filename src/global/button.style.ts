@@ -9,12 +9,11 @@ interface ButtonProps {
 export const Button = styled.button<ButtonProps>`
     width: ${props => props.width};
     height: 50px;
-    font-size: 18px;
+    font-size: 16px;
     border: ${props => props.primary ? 'none' : '1px solid rgb(40,40,40)'};
-    background: ${props => props.primary ? '#054f77' : 'none'};
+    background: ${props => props.primary ? 'rgb(40,40,40)' : 'none'};
     color: ${props => props.primary ? 'white' : 'rgb(40,40,40)'};
     margin-top: 20px;
-    box-shadow: ${props => props.primary ? '0px 0px 15px #054f77' : 'none'};
     transition: 150ms;
 
     &:hover{

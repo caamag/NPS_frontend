@@ -17,8 +17,10 @@ const Settings = () => {
     const [questions, setQuestions] = useState<string>('Example')
     const [npsTitle, setNPSTitle] = useState<string>('')
     const [commentTitle, setCommentTitle] = useState<string>()
-    const [npsConfig, setNpsConfig] = useState<boolean>(false)
-    const [colors, setColors] = useState<string[]>(['#e31212', '#edc446', '#41aa14']);
+    const [npsConfig, setNpsConfig] = useState<boolean | null>(false)
+    const [colors, setColors] = useState<string[]>([])
+    const [borderRadius, setBorderRadius] = useState<string>('')
+    const [fontColor, setFontColor] = useState<string>('')
 
     const emojiList: string[] = [icon.badEmoji, icon.sadEmoji, icon.neutralEmoji, icon.happyEmoji, icon.veryHappyEmoji];
     const icons = modelIndex === 2 ? emojiList : [icon.emptyStar, icon.yellowStar];
@@ -105,17 +107,25 @@ const Settings = () => {
                 onChange={(e) => { setCommentTitle(e.target.value) }}
             />}
 
-            {npsConfig && <NpsModal setColors={setColors} setNpsConfig={setNpsConfig} />}
+            {npsConfig && <NpsModal
+                setColors={setColors}
+                setNpsConfig={setNpsConfig}
+                setBorderRadius={setBorderRadius}
+                setFontColor={setFontColor}
+            />}
 
             <Preview
                 iconsList={icons}
                 numberIcons={numberIcons}
                 NPS={npsQuestion}
-                comment={comment}
-                questions={questions}
                 NPSTitle={npsTitle}
-                commentTitle={commentTitle}
+                fontColor={fontColor}
+                borderRadius={borderRadius}
                 colors={colors}
+                comment={comment}
+                commentTitle={commentTitle}
+                questions={questions}
+
             />
         </Css.SettingsContainer >
     )

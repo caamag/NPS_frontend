@@ -10,7 +10,9 @@ interface PreviewProps {
     comment: boolean;
     commentTitle?: string;
     questions: string;
-    colors: string[]
+    colors: string[];
+    fontColor: string;
+    borderRadius: string
 }
 
 const Preview: React.FC<PreviewProps> = ({
@@ -21,7 +23,9 @@ const Preview: React.FC<PreviewProps> = ({
     comment,
     commentTitle,
     questions,
-    colors
+    colors,
+    fontColor,
+    borderRadius,
 }) => {
 
     const questionsSplited = questions.split(';')
@@ -60,6 +64,8 @@ const Preview: React.FC<PreviewProps> = ({
                                 badColor={colors[0]}
                                 neutralColor={colors[1]}
                                 greatColor={colors[2]}
+                                radius={borderRadius}
+                                fontColor={fontColor}
                             >
                                 {index}
                             </Css.npsBox>

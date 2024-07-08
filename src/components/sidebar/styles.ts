@@ -1,30 +1,22 @@
 
 import styled from "styled-components";
 
-export const SidebarContainer = styled.div`
-    width: 20%;
+interface sidebarProps {
+    visible?: boolean;
+}
+
+export const SidebarContainer = styled.div<sidebarProps>`
+    width: ${props => props.visible ? '20%' : '5%'};
     height: 100%;
     background-color: rgb(40,40,40);
     z-index: 3;
-
-    h1{
-        font-size: 4rem;
-        color: white;
-        text-align: center;
-        margin-top: 40px;
-    }
-
-    h3{
-        font-size: 2.5rem;
-        color: white;
-        margin-top: 50px;
-        padding-left: 20px;
-    }
+    transition: 250ms;
 `
 
 export const SidebarList = styled.ul`
     width: 100%;
     list-style: none;
+    padding-top: 50px;
 
     a{
         text-decoration: none;
@@ -33,21 +25,40 @@ export const SidebarList = styled.ul`
     }
 
     .active li{
-        background-color: rgb(80,80,80);
+        background-color: rgb(70,70,70);
         color: white;
+    }
+
+    .active img{
+        filter: invert(70%);
     }
 `
 
 export const SidebarItem = styled.li`
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     color: white;
     padding: 20px 40px;
     margin-top: 5px;
     color: gray;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
 
     &:hover{
         background-color: rgb(80,80,80);
         color: white;
+    }
+
+    &:hover > img{
+        filter: invert(70%);
+    }
+
+    img{
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        filter: invert(40%);
+        transition: 150ms;
     }
 `
 

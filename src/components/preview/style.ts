@@ -11,9 +11,22 @@ export const PreviewContainer = styled.div<PreviewProps>`
     top: 150px;
     right: 50px;
     box-shadow: 0px 0px 10px gray;
-    overflow-y: scroll;
     padding: 15px;
     background-color: white;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar{
+        width: 5px;
+    }
+
+    &::-webkit-scrollbar-track{
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb{
+        background-color: rgb(40,40,40);
+        border-radius: 3px;
+    }
 
     @media screen and (max-width: 1150px) {
         width: 80%;

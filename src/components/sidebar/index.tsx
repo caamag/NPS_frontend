@@ -12,21 +12,21 @@ const Sidebar = () => {
             <button
                 onClick={() => { SetIsVisible(props => !props) }}
             >
-                esconder
+                {'>'}
             </button>
 
             <Css.SidebarList>
                 <NavLink to={'/csat/settings'}>
-                    <Css.SidebarItem>
+                    <Css.SidebarItem visible={isVisible}>
                         <img src={icon.settingsIcon} alt="" />
-                        SETTINGS
+                        {isVisible ? 'SETTINGS' : ''}
                     </Css.SidebarItem>
                 </NavLink>
 
                 <NavLink to={'/'}>
-                    <Css.SidebarItem>
+                    <Css.SidebarItem visible={isVisible}>
                         <img src={icon.templateIcon} alt="" />
-                        TEMPLATE
+                        {isVisible ? 'TEMPLATES' : ''}
                     </Css.SidebarItem>
                 </NavLink>
             </Css.SidebarList>

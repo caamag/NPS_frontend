@@ -6,6 +6,11 @@ export const SettingsContainer = styled.div`
     position: relative;
     overflow-y: scroll;
 
+    &::-webkit-scrollbar{
+        width: 0px;
+        background: transparent;
+    }
+
     h2{
         margin-top: 50px;
         margin-left: 50px;

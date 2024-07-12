@@ -28,12 +28,23 @@ export const PreviewContainer = styled.div<PreviewProps>`
         border-radius: 3px;
     }
 
-    @media screen and (max-width: 1150px) {
-        width: 80%;
+    @media screen and (max-width: 500px){
+        width: 100%;
         height: 140vh;
         max-height: 140vh;
         top: 50px;
-        left: 50px;
+        left: 0px;
+        box-shadow: none;
+        display: ${props => props.isPreview ? 'block' : 'none'};
+    }
+
+    @media screen and (min-width: 501px) and (max-width: 1150px) {
+        width: 100%;
+        height: 140vh;
+        max-height: 140vh;
+        top: 50px;
+        left: 0px;
+        box-shadow: none;
         display: ${props => props.isPreview ? 'block' : 'none'};
     }
 
@@ -132,6 +143,10 @@ export const OpenPreviewBtn = styled.button`
         color: white;
     }
 
+    @media screen and (max-width: 950px) {
+        margin: 10px;
+    }
+
     @media screen and (max-width: 1150px) {
         display: block;
     }
@@ -150,5 +165,7 @@ export const CloseBtn = styled.button`
 
     @media screen and (max-width: 1150px) {
         display: block;
+        right: 40px;
+        padding: 5px 10px;
     }
 `

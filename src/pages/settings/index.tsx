@@ -125,7 +125,6 @@ const Settings = () => {
                 comment={comment}
                 commentTitle={commentTitle}
                 questions={questions}
-
             />
         </Css.SettingsContainer >
     )

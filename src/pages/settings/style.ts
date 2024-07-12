@@ -34,6 +34,17 @@ export const SettingsContainer = styled.div`
         margin-left: 5px;
         scale: 0.8;
     }
+
+    @media screen and (max-width: 950px) {
+        h2, h3, p{
+            margin-left: 10px;
+        }
+
+        img{
+            width: 30px;
+            height: 30px;
+        }
+    }
 `
 
 export const QuestionModel = styled.div`
@@ -58,6 +69,14 @@ export const QuestionModel = styled.div`
         margin-top: 5px;
         padding: 10px;
     }
+
+    @media screen and (max-width: 950px) {
+        margin-left: 10px;
+
+        h3{
+            font-size: 1.4rem;
+        }
+    }
 `;
 
 export const SettingsForm = styled.form`
@@ -81,6 +100,15 @@ export const SettingsForm = styled.form`
         width: 300px;
         padding: 8px;
         min-height: 100px;
+    }
+
+    @media screen and (max-width: 950px) {
+        margin: 10px;
+        width: 80%;
+
+        textarea{
+            width: 100%;
+        }
     }
 `;
 

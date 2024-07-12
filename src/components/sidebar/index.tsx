@@ -5,7 +5,9 @@ import { useState } from 'react';
 
 const Sidebar = () => {
 
-    const [isVisible, SetIsVisible] = useState<boolean>(true)
+    const [isVisible, SetIsVisible] = useState<boolean>(true);
+    const windowWidth = window.innerWidth;
+
 
     return (
         <Css.SidebarContainer visible={isVisible}>
@@ -19,14 +21,14 @@ const Sidebar = () => {
                 <NavLink to={'/csat/settings'}>
                     <Css.SidebarItem visible={isVisible}>
                         <img src={icon.settingsIcon} alt="" />
-                        {isVisible ? 'SETTINGS' : ''}
+                        {isVisible && windowWidth > 950 ? 'SETTINGS' : ''}
                     </Css.SidebarItem>
                 </NavLink>
 
                 <NavLink to={'/'}>
                     <Css.SidebarItem visible={isVisible}>
                         <img src={icon.templateIcon} alt="" />
-                        {isVisible ? 'TEMPLATES' : ''}
+                        {isVisible && windowWidth > 950 ? 'TEMPLATES' : ''}
                     </Css.SidebarItem>
                 </NavLink>
             </Css.SidebarList>

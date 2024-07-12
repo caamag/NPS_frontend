@@ -36,7 +36,6 @@ const Preview: React.FC<PreviewProps> = ({
 
     return (
         <>
-
             {!openPreview && <Css.OpenPreviewBtn onClick={() => { setOpenPreview(true) }}>Open preview</Css.OpenPreviewBtn>}
 
             <Css.PreviewContainer isPreview={openPreview}>
@@ -95,7 +94,6 @@ const Preview: React.FC<PreviewProps> = ({
             </Css.PreviewContainer>
         </>
     )
-
 }
 
 export default Preview;

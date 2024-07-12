@@ -6,18 +6,18 @@ export const ModalContainer = styled.div`
     width: 100%;
     height: 100vh;
     top: 0px;
-    z-index: 2;
+    left: 0px;
+    background-color: rgb(40,40,40, 0.9);
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(40,40,40, 0.9);
+    z-index: 2;
 `
 
 export const Modal = styled.div`
     position: relative;
-    width: 25%;
+    width: 400px;
     height: 50%;
-    margin-right: 20%;
     padding: 15px;
     background-color: white;
 

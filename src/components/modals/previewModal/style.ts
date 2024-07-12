@@ -15,9 +15,9 @@ export const ModalContainer = styled.div`
 
 export const Modal = styled.div`
     position: relative;
-    width: 25%;
+    width: 400px;
     height: 50%;
-    margin-left: 20%;
+    padding: 15px;
     background-color: white;
 `
 

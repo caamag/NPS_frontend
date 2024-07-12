@@ -22,14 +22,22 @@ export const SidebarContainer = styled.div<sidebarProps>`
         color: white;
         right: -11px;
         top: 20px;
-        font-weight: bold;
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+        font-weight: 500;
+        font-family: 'Times New Roman', Times, serif;
         transition: 250ms;
     }
 
     button:hover{
         background-color: rgb(80,80,80);
     }
+
+    @media screen and (max-width: 950px) {
+        width: 70px;
+
+        button{
+            display: none;
+        }
+    }   
 `
 
 export const SidebarList = styled.ul`
@@ -80,6 +88,15 @@ export const SidebarItem = styled.li<sidebarProps>`
         margin-right: ${props => props.visible ? '10px' : '0px'};
         transition: 150ms;
         filter: invert(40%);
+    }
+
+    @media screen and (max-width: 950px) {
+        padding: 10px;
+        justify-content: center;
+
+        img {
+            margin-right: 0px;
+        }
     }
 `
 

@@ -22,4 +22,12 @@ export const QuestionModel = styled.div`
         margin-top: 5px;
         padding: 10px;
     }
+
+    @media screen and (max-width: 950px) {
+        margin-left: 10px;
+
+        div{
+            margin-left: 0px;
+        }
+    }   
 `;

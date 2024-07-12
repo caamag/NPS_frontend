@@ -19,6 +19,10 @@ export const Modal = styled.div`
     height: 50%;
     padding: 15px;
     background-color: white;
+
+    input{
+        padding: 5px;
+    }
 `
 
 export const CloseBtn = styled.button`

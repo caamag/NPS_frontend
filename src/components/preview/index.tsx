@@ -30,7 +30,7 @@ const Preview: React.FC<PreviewProps> = ({
 }) => {
 
     const questionsSplited = questions.split(';')
-    const emojiLis: string[] = [icon.badEmoji, icon.sadEmoji, icon.neutralEmoji, icon.happyEmoji, icon.veryHappyEmoji]
+    const emojiList: string[] = [icon.badEmoji, icon.sadEmoji, icon.neutralEmoji, icon.happyEmoji, icon.veryHappyEmoji]
     const [previewModal, setPreviewModal] = useState<boolean>(false)
     const [openPreview, setOpenPreview] = useState<boolean>(false)
 
@@ -49,13 +49,19 @@ const Preview: React.FC<PreviewProps> = ({
 
                         <h4 key={index}>{question}</h4>
                         <Css.iconsContainer>
-                            {iconsList.includes('/src/assets/pessimo.png') && iconsList.map((_, index) => (
-                                <img src={emojiLis[index]} alt="" />
-                            ))}
+                            {
+                                iconsList.includes('/src/assets/pessimo.png') &&
+                                iconsList.map((_, index) => (
+                                    <img src={emojiList[index]} alt="" />
+                                ))
+                            }
 
-                            {!iconsList.includes('/src/assets/pessimo.png') && Array.from({ length: Number(numberIcons) }, (_, idx) => (
-                                <img src={icon.emptyStar} alt="" key={idx} />
-                            ))}
+                            {
+                                !iconsList.includes('/src/assets/pessimo.png') &&
+                                Array.from({ length: Number(numberIcons) }, (_, idx) => (
+                                    <img src={icon.emptyStar} alt="" key={idx} />
+                                ))
+                            }
                         </Css.iconsContainer><br />
 
                     </Css.Question>

@@ -21,6 +21,8 @@ export const Modal = styled.div`
     background-color: white;
 
     input{
+        width: 70%;
+        margin-top: 20px;
         padding: 5px;
     }
 `

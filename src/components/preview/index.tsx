@@ -30,21 +30,34 @@ const Preview: React.FC<PreviewProps> = ({
 }) => {
 
     const questionsSplited = questions.split(';')
-    const emojiList: string[] = [icon.badEmoji, icon.sadEmoji, icon.neutralEmoji, icon.happyEmoji, icon.veryHappyEmoji]
+    const emojiList: string[] = [
+        icon.badEmoji,
+        icon.sadEmoji,
+        icon.neutralEmoji,
+        icon.happyEmoji,
+        icon.veryHappyEmoji
+    ]
     const [previewModal, setPreviewModal] = useState<boolean>(false)
     const [openPreview, setOpenPreview] = useState<boolean>(false)
+    const [imageUrl, setImageUrl] = useState<string>('')
 
     return (
         <>
-            {!openPreview && <Css.OpenPreviewBtn onClick={() => { setOpenPreview(true) }}>Open preview</Css.OpenPreviewBtn>}
+            {!openPreview && (
+                <Css.OpenPreviewBtn onClick={() => { setOpenPreview(true) }}>
+                    Open preview
+                </Css.OpenPreviewBtn>
+            )}
 
             <Css.PreviewContainer isPreview={openPreview}>
                 <Css.CloseBtn onClick={() => { setOpenPreview(false) }}>x</Css.CloseBtn>
-                <Css.editBtn onClick={() => { setPreviewModal(true) }}><img src={icon.editIcon} /></Css.editBtn>
+                <Css.editBtn onClick={() => { setPreviewModal(true) }}>
+                    <img src={icon.editIcon} />
+                </Css.editBtn>
 
-                <h1 style={{ textAlign: 'center', fontSize: '28px' }}>Preview</h1><br />
+                <h1>Preview</h1>
 
-                {questionsSplited.length > 0 && questionsSplited.map((question, index) => (
+                {questionsSplited.map((question, index) => (
                     <Css.Question>
 
                         <h4 key={index}>{question}</h4>
@@ -59,7 +72,7 @@ const Preview: React.FC<PreviewProps> = ({
                             {
                                 !iconsList.includes('/src/assets/pessimo.png') &&
                                 Array.from({ length: Number(numberIcons) }, (_, idx) => (
-                                    <img src={icon.emptyStar} alt="" key={idx} />
+                                    <img src={imageUrl ? imageUrl : icon.emptyStar} alt="" key={idx} />
                                 ))
                             }
                         </Css.iconsContainer><br />
@@ -95,7 +108,12 @@ const Preview: React.FC<PreviewProps> = ({
                     </Css.Question>
                 </>}
 
-                {previewModal && <PreviewModal setPreviewModal={setPreviewModal} />}
+                {previewModal && (
+                    <PreviewModal
+                        setPreviewModal={setPreviewModal}
+                        setImageUrl={setImageUrl}
+                    />
+                )}
 
             </Css.PreviewContainer>
         </>

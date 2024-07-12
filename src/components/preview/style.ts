@@ -28,6 +28,12 @@ export const PreviewContainer = styled.div<PreviewProps>`
         border-radius: 3px;
     }
 
+    h1{
+        text-align: center;
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
     @media screen and (max-width: 500px){
         width: 100%;
         height: 140vh;

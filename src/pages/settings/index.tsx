@@ -39,18 +39,22 @@ const Settings = () => {
             />
 
             <Css.SettingsForm>
-                {modelIndex === 1 && <>
-                    <label>
-                        Number of icons: <br /><br />
-                        <input
-                            type="text"
-                            placeholder='Number:'
-                            value={numberIcons}
-                            onChange={(e) => { setNumberIcons(e.target.value) }}
-                            required
-                        />
-                    </label><br /><br /><br /><br />
-                </>}
+                {modelIndex === 1 && (
+                    <>
+                        <label>
+                            Number of icons: <br /><br />
+                            <input
+                                type="text"
+                                placeholder='Number:'
+                                value={numberIcons}
+                                onChange={(e) => {
+                                    setNumberIcons(Number(e.target.value) > 10 ? '10' : e.target.value)
+                                }}
+                                required
+                            />
+                        </label><br /><br /><br /><br />
+                    </>
+                )}
 
                 <label>
                     Define questions separated by " ; "<br /><br />
@@ -73,20 +77,22 @@ const Settings = () => {
                 <h3>Do you want NPS question?</h3>
             </Css.QuestionModel>
 
-            {npsQuestion && <>
-                <input
-                    style={{ marginLeft: '50px', padding: '5px' }}
-                    type="text"
-                    placeholder='Insert the NPS title:'
-                    required
-                    value={npsTitle}
-                    onChange={(e) => { setNPSTitle(e.target.value) }}
-                />
-                <Css.CustomizeButton
-                    onClick={() => { setNpsConfig(config => !config) }}>
-                    customize
-                </Css.CustomizeButton>
-            </>}
+            {npsQuestion && (
+                <>
+                    <input
+                        style={{ marginLeft: '50px', padding: '5px' }}
+                        type="text"
+                        placeholder='Insert the NPS title:'
+                        required
+                        value={npsTitle}
+                        onChange={(e) => { setNPSTitle(e.target.value) }}
+                    />
+                    <Css.CustomizeButton
+                        onClick={() => { setNpsConfig(config => !config) }}>
+                        customize
+                    </Css.CustomizeButton>
+                </>
+            )}
 
             <Css.QuestionModel>
                 <Button
@@ -98,21 +104,25 @@ const Settings = () => {
                 <h3>Do you want comment field?</h3>
             </Css.QuestionModel>
 
-            {comment && <input
-                style={{ marginLeft: '50px', padding: '5px' }}
-                type="text"
-                placeholder='Insert the comment title:'
-                required
-                value={commentTitle}
-                onChange={(e) => { setCommentTitle(e.target.value) }}
-            />}
+            {comment && (
+                <input
+                    style={{ marginLeft: '50px', padding: '5px' }}
+                    type="text"
+                    placeholder='Insert the comment title:'
+                    required
+                    value={commentTitle}
+                    onChange={(e) => { setCommentTitle(e.target.value) }}
+                />
+            )}
 
-            {npsConfig && <NpsModal
-                setColors={setColors}
-                setNpsConfig={setNpsConfig}
-                setBorderRadius={setBorderRadius}
-                setFontColor={setFontColor}
-            />}
+            {npsConfig && (
+                <NpsModal
+                    setColors={setColors}
+                    setNpsConfig={setNpsConfig}
+                    setBorderRadius={setBorderRadius}
+                    setFontColor={setFontColor}
+                />
+            )}
 
             <Preview
                 iconsList={icons}
